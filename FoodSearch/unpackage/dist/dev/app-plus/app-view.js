@@ -1007,10 +1007,11 @@ var render = function() {
         "v-uni-view",
         { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
         [
+          _c("v-uni-text", { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } }),
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
-            [_vm._v("图片可能包含的食物：\\n" + _vm._$g(3, "t0-0"))]
+            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+            [_vm._v("\\n原始数据：" + _vm._$g(4, "t0-0"))]
           )
         ],
         1

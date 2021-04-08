@@ -2,7 +2,8 @@
 	<view class="pageWrapper">
 		<image class="rawImage" :src="imagePath" mode="aspectFit"></image>
 		<view class="text-area">
-			<text class="introduction">图片可能包含的食物：\n{{ KeyWords }}</text>
+			<text class="introduction"></text>
+			<text class="introduction">\n原始数据：{{rawData}}</text>	
 		</view>
 	</view>
 </template>
@@ -13,7 +14,8 @@ export default {
 	data() {
 		return {
 			imagePath: '/static/loading.png',
-			KeyWords: '稍等，解析中...'
+			KeyWords: '稍等，解析中...',
+			rawData:'接收中'
 		};
 	},
 	onLoad: function(option) {
@@ -36,14 +38,17 @@ export default {
 					icon: 'success'
 				});
 				_this.imagePath = option.imagePath;
+				console.log(res.data);
 				let keys='';
 				res.data.keyWords.forEach((value)=>{
 					keys+=(value.Name+"，可能性："+value.Confidence+"\n");
 				})
 				_this.KeyWords = keys;
+				_this.rawData=res.data.Raw;
 				this.onHistoryMessageCrated(option.imagePath,res.data);
 			},
 			fail: () => {
+				_this.KeyWords='没有找到结果'
 				uni.showToast({
 					title: '服务器开小差了，请稍后再试...',
 					icon: 'none'
