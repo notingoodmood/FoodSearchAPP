@@ -4,7 +4,7 @@
 		<view class="text-area">
 			<text class="title">{{ search_message }}</text>
 		</view>
-		<view class="history_button_container"><image class="history_button" src="/static/history.png"></image></view>
+		<view class="history_button_container" @click="onHistoryBottonClicked()"><image class="history_button" src="/static/history.png"></image></view>
 		<view class="text-area">
 			<text class="title">{{ history_message }}</text>
 		</view>
@@ -77,13 +77,13 @@ export default {
 				}
 			});
 		},
-		jumpTest: () => {
+		onHistoryBottonClicked(){
 			uni.navigateTo({
-				url: '../image_search_detail/image_search_detail?imagePath=/static/loading.png'
-			});
+				url:'../image_search_history/image_search_history'
+			})
+		}
 		}
 	}
-};
 </script>
 
 <style>

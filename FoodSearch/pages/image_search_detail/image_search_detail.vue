@@ -2,8 +2,18 @@
 	<view class="pageWrapper">
 		<image class="rawImage" :src="imagePath" mode="aspectFit"></image>
 		<view class="text-area">
-			<text class="introduction"></text>
-			<text class="introduction">\n原始数据：{{rawData}}</text>	
+			<view class="textTable">
+			<view class="tabelRow">
+				<view class="tableItem">名称</view>
+				<view class="tableItem">种类</view>
+				<view class="tableItem">可能性</view>
+			</view>
+			<view class="tabelRow" v-for="(item,key) in rawData" v-if="item.Name">
+				<view class="tableItem">{{item.Name}}</view>
+				<view class="tableItem">{{item.FirstCategory}}</view>
+				<view class="tableItem">{{item.Confidence}}%</view>
+			</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -14,8 +24,7 @@ export default {
 	data() {
 		return {
 			imagePath: '/static/loading.png',
-			KeyWords: '稍等，解析中...',
-			rawData:'接收中'
+			rawData:[]
 		};
 	},
 	onLoad: function(option) {
@@ -37,13 +46,8 @@ export default {
 					title: '已加载完成',
 					icon: 'success'
 				});
-				_this.imagePath = option.imagePath;
 				console.log(res.data);
-				let keys='';
-				res.data.keyWords.forEach((value)=>{
-					keys+=(value.Name+"，可能性："+value.Confidence+"\n");
-				})
-				_this.KeyWords = keys;
+				_this.imagePath = option.imagePath;
 				_this.rawData=res.data.Raw;
 				this.onHistoryMessageCrated(option.imagePath,res.data);
 			},
@@ -96,9 +100,9 @@ export default {
 	justify-content: center;
 }
 .rawImage {
-	height: 500rpx;
-	width: 500rpx;
-	margin-top: 200rpx;
+	height: 600rpx;
+	width: 600rpx;
+	margin-top: 0rpx;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 50rpx;
@@ -110,5 +114,21 @@ export default {
 .introduction {
 	font-size: 50rpx;
 	color: #171717;
+}
+.textTable{
+	display:flex;
+	flex-direction:column;
+}
+.tabelRow{
+	display:flex;
+	flex: 1;
+	flex-direction:row;
+}
+.tableItem{
+	flex: 1;
+	width: 125px;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
 }
 </style>
