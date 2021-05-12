@@ -24,6 +24,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/keywords_search_list/keywords_search_list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索结果",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/keywords_search_detail/keywords_search_detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "食物详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

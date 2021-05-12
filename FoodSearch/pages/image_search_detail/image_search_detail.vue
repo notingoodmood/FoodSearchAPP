@@ -5,12 +5,10 @@
 			<view class="textTable">
 			<view class="tabelRow">
 				<view class="tableItem">名称</view>
-				<view class="tableItem">种类</view>
 				<view class="tableItem">可能性</view>
 			</view>
 			<view class="tabelRow" v-for="(item,key) in rawData" v-if="item.Name">
 				<view class="tableItem">{{item.Name}}</view>
-				<view class="tableItem">{{item.FirstCategory}}</view>
 				<view class="tableItem">{{item.Confidence}}%</view>
 			</view>
 			</view>
@@ -48,7 +46,7 @@ export default {
 				});
 				console.log(res.data);
 				_this.imagePath = option.imagePath;
-				_this.rawData=res.data.Raw;
+				_this.rawData=res.data.keyWords;
 				this.onHistoryMessageCrated(option.imagePath,res.data);
 			},
 			fail: () => {
@@ -62,7 +60,7 @@ export default {
 	},
 	methods: {
 		onHistoryMessageCrated(imagePath,keyWords){
-			let myHistoryMessage=new historyMessage(new Date().toUTCString(),imagePath,keyWords);
+			let myHistoryMessage=new historyMessage(this.getDates(),imagePath,keyWords);
 			uni.getStorage({
 				key:HISTORY_LIST,
 				success: (res) => {
@@ -74,7 +72,6 @@ export default {
 					})
 				},
 				fail: () => {
-					console.log("404");
 					let newList=[];
 					newList.push(myHistoryMessage);
 					uni.setStorage({
@@ -83,6 +80,16 @@ export default {
 					})
 				}
 			})
+		},
+		getDates(){
+			var date = new Date();//实例一个时间对象；
+			var year = date.getFullYear();//获取系统的年；
+			var month = date.getMonth()+1;//获取系统月份，由于月份是从0开始计算，所以要加1
+			var day = date.getDate();//获取系统日
+			var hour = date.getHours();//获取系统时间
+			var minute = date.getMinutes(); //分
+			var second = date.getSeconds();//秒
+			return year+'年'+month+'月'+day+'日 '+hour+':'+minute+':'+second;
 		}
 	}
 };

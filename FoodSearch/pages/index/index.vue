@@ -1,5 +1,14 @@
 <template>
 	<view class="content">
+		<view class="SearchTitleContainer">
+		<uni-search-bar 
+		v-model="inputWords"
+		@confirm="onConfirmButtonClicked"
+		>
+		<view slot="searchIcon" style="color: #999999" >@</view>
+		</uni-search-bar>	
+		</view>
+		<view class="ImageSearchTitle">{{image_search_title}}</view>
 		<view class="serach_button_container" @click="onSearchButtonClicked()"><image class="search_button" src="/static/search.png"></image></view>
 		<view class="text-area">
 			<text class="title">{{ search_message }}</text>
@@ -16,8 +25,10 @@ import { encodeMyUrl, historyMessage } from '../../info.js';
 export default {
 	data() {
 		return {
-			history_message: '历史记录',
-			search_message: '开始搜索'
+			inputWords:'',
+			history_message: '搜图历史记录',
+			search_message: '开始图片搜索',
+			image_search_title: '以图搜索'
 		};
 	},
 	onLoad() {},
@@ -81,6 +92,11 @@ export default {
 			uni.navigateTo({
 				url:'../image_search_history/image_search_history'
 			})
+		},
+		onConfirmButtonClicked(){
+			uni.navigateTo({
+				url:"../keywords_search_list/keywords_search_list?keyword="+this.inputWords,
+			})
 		}
 		}
 	}
@@ -93,11 +109,20 @@ export default {
 	align-items: center;
 	justify-content: center;
 }
+.SearchTitleContainer{
+	width: 100%;
+}
+.ImageSearchTitle{
+	margin-left: 0;
+	margin-top: 50px;
+	float: left;
+	font-size: 25px;
+}
 
 .serach_button_container {
 	height: 350rpx;
 	width: 350rpx;
-	margin-top: 300rpx;
+	margin-top: 100rpx;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 50rpx;
@@ -119,7 +144,7 @@ export default {
 .history_button_container {
 	height: 250rpx;
 	width: 250rpx;
-	margin-top: 100rpx;
+	margin-top: 50rpx;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 50rpx;
