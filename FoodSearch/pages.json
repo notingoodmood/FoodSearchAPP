@@ -51,11 +51,39 @@
             }
             
         }
+        ,{
+            "path" : "pages/questionnaire_self_checking/questionnaire_self_checking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "自助诊疗",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#3cc51f",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+		"fontSize":"15px",
+		"height":"70px",
+	    "list": [{
+	        "pagePath": "pages/index/index",
+	        "iconPath": "static/search_black.png",
+	        "selectedIconPath": "static/search_green.png",
+	        "text": "搜索中心"
+	    }, {
+	        "pagePath": "pages/questionnaire_self_checking/questionnaire_self_checking",
+	        "iconPath": "static/questionnaire_black.png",
+	        "selectedIconPath": "static/questionnaire_green.png",
+	        "text": "自助诊疗"
+	    }]
 	}
 }

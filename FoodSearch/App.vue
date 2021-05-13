@@ -2,6 +2,7 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			/*
 			uni.navigateTo({
 				url:"pages/user_login/user_login"
 			})
@@ -9,6 +10,7 @@
 				title:"请登录...",
 				icon:"loading"
 			})
+			*/
 		},
 		onShow: function() {
 			console.log('App Show')

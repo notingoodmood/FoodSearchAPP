@@ -4,6 +4,7 @@
 		<uni-search-bar 
 		v-model="inputWords"
 		@confirm="onConfirmButtonClicked"
+		class="KeywordsSearchBar"
 		>
 		<view slot="searchIcon" style="color: #999999" >@</view>
 		</uni-search-bar>	
@@ -108,6 +109,9 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+.KeywordsSearchBar{
+	margin-top: 10px;
 }
 .SearchTitleContainer{
 	width: 100%;

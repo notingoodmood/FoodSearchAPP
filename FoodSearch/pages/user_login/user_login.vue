@@ -25,7 +25,7 @@
 </template>
 
 <script>
-	//不要把这些代码粘贴到论文里！！！！！！
+	//WARNING：不要把这些代码粘贴到论文里！！！！！！
 	export default {
 		data() {
 			return {
