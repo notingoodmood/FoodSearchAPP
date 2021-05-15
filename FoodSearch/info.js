@@ -31,3 +31,9 @@ export class historyMessage{
 export const encodeMyUrl=(api_name)=>{
 	return `http://`+server_ip+`:`+server_port+"/"+server_path+"/"+api_name;
 }
+
+//标记已经登录过
+export const FLAG_LOG_IN="log_in";
+
+//登录过状态魔数
+export const MAGIC_NUMBER_LOG_IN=1029384756;

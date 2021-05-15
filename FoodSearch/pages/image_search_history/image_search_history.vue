@@ -25,7 +25,8 @@
 		methods: {
 			onClickListItem(index){
 				uni.navigateTo({
-					url: `../image_search_detail/image_search_detail?imagePath=${this.HistoryList[index].url}`
+					url: `../image_search_detail/image_search_detail?
+					imagePath=${this.HistoryList[index].url}&&SholudNotCreateHistoryItem=true`
 				})
 			}
 		}

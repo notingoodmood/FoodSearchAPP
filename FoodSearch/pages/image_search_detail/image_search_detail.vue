@@ -34,6 +34,7 @@ export default {
 			uni.navigateBack();
 		}
 		let _this = this;
+		let flag=option.SholudNotCreateHistoryItem;
 		uni.request({
 			url: encodeMyUrl('ImageSearch'),
 			data: {
@@ -47,7 +48,9 @@ export default {
 				console.log(res.data);
 				_this.imagePath = option.imagePath;
 				_this.rawData=res.data.keyWords;
-				this.onHistoryMessageCrated(option.imagePath,res.data);
+				if(!flag){
+					this.onHistoryMessageCrated(option.imagePath,res.data);
+				}
 			},
 			fail: () => {
 				_this.KeyWords='没有找到结果'
